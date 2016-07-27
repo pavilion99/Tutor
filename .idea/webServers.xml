@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="00298742-518c-4222-b52b-5f7a335a4e48" name="Dreamhost Tutor" url="https://tutor.scolton.tech/">
+        <fileTransfer host="ftp.spencercolton.tech" port="22" rootFolder="/home/pavilion99/web" accessType="SFTP" password="df8edfccdfc9dfd8dfcbdfdadfd8df99dfdbdfd8dfccdfd2dfcddfc8dfc9df9bdf9e" username="pavilion99">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

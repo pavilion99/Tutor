@@ -1,0 +1,87 @@
+.login-signup-form-wrapper {
+    width: 60%;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right {
+    float: right;
+}
+
+#create-account {
+    float: left;
+    display: inline-block;
+}
+
+#login-submit {
+    display: inline-block;
+}
+
+.error {
+    display: none;
+}
+
+/*noinspection CssUnusedSymbol*/
+.error.visible {
+    display: block;
+}
+
+.account-info {
+    width: 750px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+}
+
+.edit-heading {
+    width: 750px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*noinspection CssUnusedSymbol*/
+.account-info img.profile-picture, .account-info div#details-1 {
+    width: 100%;
+    padding: 25px;
+}
+
+.account-info img.profile-picture {
+    float: left;
+}
+
+/*noinspection CssUnusedSymbol*/
+.account-info div#details-1 {
+    float: right;
+}
+
+.account-info.x-padding {
+    padding: 25px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    font-variant: small-caps;
+    text-align: center;
+}
+
+.verified-tutor {
+    font-size: 1em;
+    line-height: 1em;
+}
+
+#data {
+    margin-bottom: 20px;
+}
+
+table.thin {
+    width: auto;
+}
+
+table.thin th {
+    text-align: left;
+    padding-right: 15px;
+}
