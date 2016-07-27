@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand"
-               href="<?php echo REL; ?>">CUNTS</a>
+               href="<?php echo REL; ?>">BITCHES</a>
         </div>
         <div class="collapse navbar-collapse"
              id="topnav">
