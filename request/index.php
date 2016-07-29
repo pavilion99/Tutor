@@ -1,13 +1,12 @@
 <?php
-use tech\scolton\tutor\User;
-
-session_start();
-define("PAGE_NAME", "ACCOUNT");
+define("PAGE_NAME", "REQUEST");
 define("REL", "../");
+
+if (session_status() != PHP_SESSION_ACTIVE)
+    session_start();
+
 if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1)
     header("Location: " . REL . "/login");
-
-$user = User::get($_SESSION["id"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,10 +16,7 @@ $user = User::get($_SESSION["id"]);
         <script src="../assets/js/md5.min.js"></script>
         <link rel="stylesheet" href="../assets/css/main.css"/>
     </head>
-    <body onload="$('[data-toggle=\'tooltip\']').tooltip();">
-        <?php include("../assets/parts/nav.php"); ?>
-        <div class="container-fluid">
-            <?php $user->render(); ?>
-        </div>
+    <body>
+
     </body>
 </html>

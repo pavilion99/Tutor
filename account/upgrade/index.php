@@ -1,12 +1,16 @@
 <?php
+use tech\scolton\tutor\Category;
+use tech\scolton\tutor\exception\NotFoundException;
+use tech\scolton\tutor\exception\SQLException;
+use tech\scolton\tutor\Member;
+use tech\scolton\tutor\TimeSlot;
+use tech\scolton\tutor\User;
+
 define("PAGE_NAME", "ACCOUNT_UPGRADE");
 define("REL", "../../");
 session_start();
 if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1)
     header("Location: ../../login");
-
-/** @noinspection PhpIncludeInspection */
-include_once(REL . "assets/php/var.php");
 
 $categories = Category::getAllObj();
 
@@ -85,35 +89,35 @@ if (isset($_POST["page"])):
             </p>
             <table>
                 <thead>
-                <tr>
-                    <th></th>
-                    <th>Sunday</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                </tr>
+                    <tr>
+                        <th></th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <?php
-                $slots = TimeSlot::getAll();
-
-                /** @var TimeSlot $slot */
-                foreach ($slots as $slot):
-                    ?>
-                    <tr>
-                        <th><?php echo $slot->getLabel(); ?></th>
-                        <?php for ($day = 1; $day < 8; $day++): ?>
-                            <td><input class="form-control" type="checkbox" data-day="<?php echo $day; ?>"
-                                       data-slot="<?php echo $slot->getId(); ?>"
-                                       id="<?php echo $day; ?>-<?php echo $slot->getId(); ?>"/></td>
-                        <?php endfor; ?>
-                    </tr>
                     <?php
-                endforeach;
-                ?>
+                    $slots = TimeSlot::getAll();
+
+                    /** @var TimeSlot $slot */
+                    foreach ($slots as $slot):
+                        ?>
+                        <tr>
+                            <th><?php echo $slot->getLabel(); ?></th>
+                            <?php for ($day = 1; $day < 8; $day++): ?>
+                                <td><input class="form-control" type="checkbox" data-day="<?php echo $day; ?>"
+                                           data-slot="<?php echo $slot->getId(); ?>"
+                                           id="<?php echo $day; ?>-<?php echo $slot->getId(); ?>"/></td>
+                            <?php endfor; ?>
+                        </tr>
+                        <?php
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
         <?php else: ?>
@@ -150,7 +154,8 @@ if (isset($_POST["page"])):
                 $tmp = $cat->getMembers()[0];
                 echo $tmp->isMultiple() ? "multiple" : ""; ?>>
                     <?php foreach ($cat->getMembers() as $member): ?>
-                        <?php if ($member->isExtra()) continue; ?>
+                        <?php if ($member->isExtra())
+                            continue; ?>
                         <option value="<?php echo $member->getId(); ?>"
                                 id="s-<?php echo $member->getId(); ?>"><?php echo $member->getName(); ?></option>
                     <?php endforeach; ?>
@@ -190,38 +195,38 @@ endif;
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <?php include("../../assets/parts/head.php"); ?>
-    <script src="../../assets/js/main.js"></script>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <script>window.currentPage = 1;</script>
-</head>
-<body>
-<?php include("../../assets/parts/nav.php"); ?>
-<div class="container-fluid"
-     id="main-content">
-    <div class="login-signup-form-wrapper">
-        <h1>
-            Become a Tutor
-        </h1>
-        <div id="data">
-            <form id="upgrade-form"
-                  action="javascript:void(0);"
-                  onsubmit="next();">
-                <input type="tel"
-                       pattern="\d{10}"
-                       name="phone"
-                       id="phone"
-                       placeholder="Phone number (ten digits, no dashes or parentheses)"
-                       class="form-control"/>
-                <br/>
-                <input type="submit"
-                       class="btn btn-lg btn-primary right"
-                       value="Continue"
-                       id="continue"/>
-            </form>
+    <head>
+        <?php include("../../assets/parts/head.php"); ?>
+        <script src="../../assets/js/main.js"></script>
+        <link rel="stylesheet" href="../../assets/css/main.css"/>
+        <script>window.currentPage = 1;</script>
+    </head>
+    <body>
+        <?php include("../../assets/parts/nav.php"); ?>
+        <div class="container-fluid"
+             id="main-content">
+            <div class="login-signup-form-wrapper">
+                <h1>
+                    Become a Tutor
+                </h1>
+                <div id="data">
+                    <form id="upgrade-form"
+                          action="javascript:void(0);"
+                          onsubmit="next();">
+                        <input type="tel"
+                               pattern="\d{10}"
+                               name="phone"
+                               id="phone"
+                               placeholder="Phone number (ten digits, no dashes or parentheses)"
+                               class="form-control"/>
+                        <br/>
+                        <input type="submit"
+                               class="btn btn-lg btn-primary right"
+                               value="Continue"
+                               id="continue"/>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

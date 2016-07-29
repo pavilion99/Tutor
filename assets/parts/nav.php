@@ -35,7 +35,7 @@
                     <?php if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1): ?>
                         <li><a href="<?php echo REL; ?>login"><span class="glyphicon glyphicon-log-in"></span></a></li>
                     <?php else: ?>
-                        <li><a onclick="logout()"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                        <li><a onclick="logout();"><span class="glyphicon glyphicon-log-out"></span></a></li>
                     <?php endif; ?>
                 </ul>
             <?php endif; ?>

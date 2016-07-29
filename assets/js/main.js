@@ -214,7 +214,7 @@ function signup() {
 
     var x = new XMLHttpRequest();
     x.open("GET", root + "signup/index.php", true);
-    x.onreadystatechange = function() {
+    x.onreadystatechange = function () {
         if (x.readyState == 4 && x.status == 200) {
             var res = JSON.parse(x.responseText);
             if (res.success) {
