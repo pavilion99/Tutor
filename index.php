@@ -3,7 +3,7 @@ use tech\scolton\tutor\exception\NotFoundException;
 use tech\scolton\tutor\User;
 
 define("PAGE_NAME", "MAIN");
-define("REL", "");
+define("REL", ".");
 
 spl_autoload_register(function ($class) {
     $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
