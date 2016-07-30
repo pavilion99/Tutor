@@ -1,5 +1,6 @@
 RewriteEngine On
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [AND]
+RewriteCond "%{HTTP_HOST}" "tutor.scolton.tech"
 RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 
 <ifmodule mod_deflate.c>
