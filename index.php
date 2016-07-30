@@ -6,6 +6,8 @@ define("PAGE_NAME", "MAIN");
 define("REL", ".");
 
 spl_autoload_register(function ($class) {
+    echo "CLASS REQUESTED: ".$class;
+
     $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
     $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
 
@@ -15,6 +17,8 @@ spl_autoload_register(function ($class) {
 
         if (strtolower($item->getBasename(".php")) != $class)
             continue;
+
+        echo "Included: ".$item->getPath();
 
         /** @noinspection PhpIncludeInspection */
         include ($item->getPath());
