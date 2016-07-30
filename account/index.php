@@ -44,7 +44,7 @@ $user = User::get($_SESSION["id"]);
     <body onload="$('[data-toggle=\'tooltip\']').tooltip();">
         <?php include("../assets/parts/nav.php"); ?>
         <div class="container-fluid">
-            <?php $user->render(); ?>
+            <?php echo $user->render(); ?>
         </div>
     </body>
 </html>

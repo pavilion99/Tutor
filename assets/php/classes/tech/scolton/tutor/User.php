@@ -124,7 +124,7 @@ class User {
 
     public function render() {
         $helper = new UserHelper($this);
-        echo $helper->render();
+        return $helper->render();
     }
 
 }
