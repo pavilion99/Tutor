@@ -76,12 +76,14 @@ class UserHelper {
     }
 
     private function doRender($arguments) {
+        /** @noinspection PhpUnusedLocalVariableInspection */
         $days = $arguments["days"];
+        /** @noinspection PhpUnusedLocalVariableInspection */
         $slots = $arguments["slots"];
+        /** @noinspection PhpUnusedLocalVariableInspection */
         $actual = $arguments["actual"];
 
-        ob_start();
-        ?>
+        $html = <<<'HTML'
         <div class="well account-info">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
@@ -224,7 +226,7 @@ class UserHelper {
                 </h4>
             <?php endif; ?>
         </div>
-        <?
-        return ob_get_clean();
+HTML;
+        return eval($html);
     }
 }
