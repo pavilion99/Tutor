@@ -1,6 +1,22 @@
 <?php
 use tech\scolton\tutor\User;
 
+spl_autoload_register(function ($class) {
+    $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
+    $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
+
+    foreach ($j as $item) {
+        if (strtolower($item->getExtension()) != "php")
+            continue;
+
+        if (strtolower($item->getBasename(".php")) != $class)
+            continue;
+
+        /** @noinspection PhpIncludeInspection */
+        include ($item->getPath());
+    }
+});
+
 session_start();
 define("PAGE_NAME", "ACCOUNT");
 define("REL", "../");

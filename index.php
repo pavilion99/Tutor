@@ -3,7 +3,24 @@ use tech\scolton\tutor\exception\NotFoundException;
 use tech\scolton\tutor\User;
 
 define("PAGE_NAME", "MAIN");
-define("REL", "");
+define("REL", ".");
+
+spl_autoload_register(function ($class) {
+    $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
+    $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
+
+    foreach ($j as $item) {
+        if (strtolower($item->getExtension()) != "php")
+            continue;
+
+        if (strtolower($item->getBasename(".php")) != $class)
+            continue;
+
+        /** @noinspection PhpIncludeInspection */
+        include ($item->getPath());
+    }
+});
+
 session_start();
 if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1)
     header("Location: login");
