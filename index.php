@@ -5,6 +5,8 @@ use tech\scolton\tutor\User;
 define("PAGE_NAME", "MAIN");
 define("REL", ".");
 
+phpinfo();
+
 spl_autoload_register(function ($class) {
     echo "CLASS REQUESTED: ".$class;
 
