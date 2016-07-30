@@ -1,6 +1,10 @@
 <?php
 use tech\scolton\tutor\User;
 
+session_start();
+define("PAGE_NAME", "ACCOUNT");
+define("REL", "../");
+
 spl_autoload_register(function ($class) {
     $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
     $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
@@ -13,13 +17,10 @@ spl_autoload_register(function ($class) {
             continue;
 
         /** @noinspection PhpIncludeInspection */
-        include ($item->getPath());
+        include($item->getPath());
     }
 });
 
-session_start();
-define("PAGE_NAME", "ACCOUNT");
-define("REL", "../");
 if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1)
     header("Location: " . REL . "/login");
 

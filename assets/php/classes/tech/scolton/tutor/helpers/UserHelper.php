@@ -68,7 +68,7 @@ class UserHelper {
             }
         }
 
-        return array (
+        return array(
             "days" => $days,
             "slots" => $slots,
             "actual" => $actual,
@@ -76,12 +76,12 @@ class UserHelper {
     }
 
     private function doRender($arguments) {
-        $days   = $arguments["days"];
-        $slots  = $arguments["slots"];
+        $days = $arguments["days"];
+        $slots = $arguments["slots"];
         $actual = $arguments["actual"];
 
         ob_start();
-?>
+        ?>
         <div class="well account-info">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
@@ -224,7 +224,7 @@ class UserHelper {
                 </h4>
             <?php endif; ?>
         </div>
-<?
+        <?
         return ob_get_clean();
     }
 }

@@ -3,6 +3,23 @@ use tech\scolton\tutor\User;
 
 define("PAGE_NAME", "USER");
 define("REL", "../");
+
+spl_autoload_register(function ($class) {
+    $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
+    $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
+
+    foreach ($j as $item) {
+        if (strtolower($item->getExtension()) != "php")
+            continue;
+
+        if (strtolower($item->getBasename(".php")) != $class)
+            continue;
+
+        /** @noinspection PhpIncludeInspection */
+        include($item->getPath());
+    }
+});
+
 if (session_status() != PHP_SESSION_ACTIVE)
     session_start();
 if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3233946722">
+  <component name="DataSourceManagerImpl" format="xml" hash="4187875176">
     <data-source source="LOCAL" name="Dreamhost Tutor" uuid="2228b81f-0d77-4e7c-adb0-d6e1a25bafdc">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

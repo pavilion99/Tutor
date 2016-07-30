@@ -4,6 +4,22 @@ define("REL", "../");
 
 use tech\scolton\tutor\Database;
 
+spl_autoload_register(function ($class) {
+    $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
+    $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
+
+    foreach ($j as $item) {
+        if (strtolower($item->getExtension()) != "php")
+            continue;
+
+        if (strtolower($item->getBasename(".php")) != $class)
+            continue;
+
+        /** @noinspection PhpIncludeInspection */
+        include($item->getPath());
+    }
+});
+
 if (session_status() != PHP_SESSION_ACTIVE)
     session_start();
 
