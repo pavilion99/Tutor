@@ -5,12 +5,16 @@ use tech\scolton\tutor\User;
 define("PAGE_NAME", "MAIN");
 define("REL", ".");
 
-phpinfo();
-
 spl_autoload_register(function ($class) {
     echo "CLASS REQUESTED: ".$class;
 
-    $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
+    $tmp = str_replace("\\", DIRECTORY_SEPARATOR, $class);
+
+    /** @noinspection PhpIncludeInspection */
+    if (@include_once (REL."/assets/php/classes/.$tmp.php"))
+        return;
+
+    $i = new RecursiveDirectoryIterator(REL."/assets/php/classes/", RecursiveDirectoryIterator::SKIP_DOTS);
     $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
 
     foreach ($j as $item) {
