@@ -6,13 +6,10 @@ define("PAGE_NAME", "MAIN");
 define("REL", ".");
 
 spl_autoload_register(function ($class) {
-    echo "CLASS REQUESTED: ".$class;
-
     $tmp = str_replace("\\", DIRECTORY_SEPARATOR, $class);
 
     /** @noinspection PhpIncludeInspection */
-    if (@include_once (REL."/assets/php/classes/$tmp.php")) {
-        echo REL."/assets/php/classes/$tmp.php";
+    if (@require_once (REL."/assets/php/classes/$tmp.php")) {
         return;
     }
 
@@ -26,10 +23,8 @@ spl_autoload_register(function ($class) {
         if (strtolower($item->getBasename(".php")) != $class)
             continue;
 
-        echo "Included: ".$item->getPath();
-
         /** @noinspection PhpIncludeInspection */
-        include ($item->getPath());
+        require_once ($item->getPath());
     }
 });
 
