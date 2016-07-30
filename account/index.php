@@ -6,7 +6,14 @@ define("PAGE_NAME", "ACCOUNT");
 define("REL", "../");
 
 spl_autoload_register(function ($class) {
-    $i = new RecursiveDirectoryIterator(REL, RecursiveDirectoryIterator::SKIP_DOTS);
+    $tmp = str_replace("\\", DIRECTORY_SEPARATOR, $class);
+
+    /** @noinspection PhpIncludeInspection */
+    if (@require_once(REL . "assets/php/classes/$tmp.php")) {
+        return;
+    }
+
+    $i = new RecursiveDirectoryIterator(REL . "assets/php/classes/", RecursiveDirectoryIterator::SKIP_DOTS);
     $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
 
     foreach ($j as $item) {
@@ -17,7 +24,7 @@ spl_autoload_register(function ($class) {
             continue;
 
         /** @noinspection PhpIncludeInspection */
-        include($item->getPath());
+        require_once($item->getPath());
     }
 });
 
