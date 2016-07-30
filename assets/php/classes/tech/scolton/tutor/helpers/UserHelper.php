@@ -227,6 +227,7 @@ class UserHelper {
             <?php endif; ?>
         </div><?php
 HTML;
-        return eval($html);
+        $a = eval($html);
+        return $a ? $a : "Failure to render profile due to error in the code: ".$html;
     }
 }
