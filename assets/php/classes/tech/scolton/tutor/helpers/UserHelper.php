@@ -26,7 +26,7 @@ class UserHelper {
 
     public function render() {
         $arguments = $this->preRender();
-        echo $this->doRender($arguments);
+        return $this->doRender($arguments);
     }
 
     private function preRender() {
