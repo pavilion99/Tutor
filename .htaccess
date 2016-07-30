@@ -1,7 +1,7 @@
-RewriteEngine On
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteCond %{HTTP_HOST} ^tutor\.scolton\.tech$
-RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+# RewriteEngine On
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https
+# RewriteCond %{HTTP_HOST} ^tutor\.scolton\.tech$
+# RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 
 <ifmodule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
