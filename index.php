@@ -3,17 +3,17 @@ use tech\scolton\tutor\exception\NotFoundException;
 use tech\scolton\tutor\User;
 
 define("PAGE_NAME", "MAIN");
-define("REL", ".");
+define("REL", "./");
 
 spl_autoload_register(function ($class) {
     $tmp = str_replace("\\", DIRECTORY_SEPARATOR, $class);
 
     /** @noinspection PhpIncludeInspection */
-    if (@require_once (REL."/assets/php/classes/$tmp.php")) {
+    if (@require_once (REL."assets/php/classes/$tmp.php")) {
         return;
     }
 
-    $i = new RecursiveDirectoryIterator(REL."/assets/php/classes/", RecursiveDirectoryIterator::SKIP_DOTS);
+    $i = new RecursiveDirectoryIterator(REL."assets/php/classes/", RecursiveDirectoryIterator::SKIP_DOTS);
     $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
 
     foreach ($j as $item) {

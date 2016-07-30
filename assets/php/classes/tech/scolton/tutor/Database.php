@@ -6,7 +6,7 @@ use mysqli;
 class Database {
 
     public static function getSQL() {
-        $config = parse_ini_file("../../../../config/database.ini");
+        $config = parse_ini_file(REL."assets/php/config/database.ini");
 
         define("HOST",      $config["db_host"]);
         define("USERNAME",  $config["db_user"]);
