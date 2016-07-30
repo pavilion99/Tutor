@@ -94,7 +94,7 @@ class UserHelper {
                 <div class="col-md-6 col-sm-6">
                     <h1 id="details-name">
                         <?php /** @noinspection PhpUndefinedVariableInspection */
-                        echo $user->getName(); ?>
+                        echo $this->user->getName(); ?>
                         <?php if ($this->tutor): ?>
                             <span title="Verified Tutor" data-toggle="tooltip" data-placement="right"
                                   class="glyphicon glyphicon-apple verified-tutor"></span>
@@ -102,7 +102,7 @@ class UserHelper {
                     </h1>
                     <h4>
                         <?php
-                        $grade = $user->getGrade();
+                        $grade = $this->user->getGrade();
 
                         $addendum = "";
                         if ($grade >= 9 && $grade <= 12) {
@@ -131,7 +131,7 @@ class UserHelper {
                     </h4>
                     <h4>
                         <a href="mailto:<?php echo $user->getEmail(); ?>">
-                            <?php echo $user->getEmail(); ?>
+                            <?php echo $this->user->getEmail(); ?>
                         </a>
                     </h4>
                 </div>
