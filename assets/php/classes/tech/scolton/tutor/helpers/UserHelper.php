@@ -84,7 +84,7 @@ class UserHelper {
         $actual = $arguments["actual"];
 
         $html = <<<'HTML'
-        <div class="well account-info">
+        ?><div class="well account-info">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <img data-toggle="tooltip" data-placement="bottom" title="Profile pictures coming soon!"
@@ -225,7 +225,7 @@ class UserHelper {
                     <?php endif; ?>
                 </h4>
             <?php endif; ?>
-        </div>
+        </div><?php
 HTML;
         return eval($html);
     }
