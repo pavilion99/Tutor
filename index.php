@@ -11,8 +11,10 @@ spl_autoload_register(function ($class) {
     $tmp = str_replace("\\", DIRECTORY_SEPARATOR, $class);
 
     /** @noinspection PhpIncludeInspection */
-    if (@include_once (REL."/assets/php/classes/.$tmp.php"))
+    if (@include_once (REL."/assets/php/classes/$tmp.php")) {
+        echo REL."/assets/php/classes/$tmp.php";
         return;
+    }
 
     $i = new RecursiveDirectoryIterator(REL."/assets/php/classes/", RecursiveDirectoryIterator::SKIP_DOTS);
     $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
