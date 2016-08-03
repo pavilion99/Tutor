@@ -9,28 +9,7 @@ session_start();
 define("PAGE_NAME", "ACCOUNT_EDIT");
 define("REL", "../../");
 
-spl_autoload_register(function ($class) {
-    $tmp = str_replace("\\", DIRECTORY_SEPARATOR, $class);
-
-    /** @noinspection PhpIncludeInspection */
-    if (@require_once(REL . "assets/php/classes/$tmp.php")) {
-        return;
-    }
-
-    $i = new RecursiveDirectoryIterator(REL . "assets/php/classes/", RecursiveDirectoryIterator::SKIP_DOTS);
-    $j = new RecursiveIteratorIterator($i, RecursiveIteratorIterator::SELF_FIRST);
-
-    foreach ($j as $item) {
-        if (strtolower($item->getExtension()) != "php")
-            continue;
-
-        if (strtolower($item->getBasename(".php")) != $class)
-            continue;
-
-        /** @noinspection PhpIncludeInspection */
-        require_once($item->getPath());
-    }
-});
+include_once(REL . "assets/php/var.php");
 
 if (!isset($_SESSION["id"]) || $_SESSION["id"] == -1)
     header("Location: " . REL . "/login");
